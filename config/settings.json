@@ -1,0 +1,254 @@
+{
+  "_help": "General options for each step. Set a step to false to skip it on every run. Use -Only or -Skip on the command line to choose steps for a single run.",
+
+  "steps": {
+    "Backup": true,
+    "SecurityPolicy": true,
+    "AuditPolicy": true,
+    "Users": true,
+    "Registry": true,
+    "Firewall": true,
+    "Printers": true,
+    "Shares": true,
+    "Services": true,
+    "Features": true,
+    "Defender": true,
+    "WindowsUpdate": true,
+    "Tasks": true,
+    "SSH": true,
+    "Browsers": true,
+    "ServerRoles": true,
+    "Hosts": true,
+    "Persistence": true,
+    "Software": true,
+    "Files": true
+  },
+
+  "securityPolicy": {
+    "_applyUserRights": "Apply the PrivilegeRights section of security-policy.json. Always skipped on domain controllers.",
+    "applyUserRights": true
+  },
+
+  "users": {
+    "_unauthorizedUserAction": "Remove, Disable or Report. Remove asks for confirmation for each user unless -Force is used.",
+    "unauthorizedUserAction": "Remove",
+    "_unauthorizedAdminAction": "Demote (remove from Administrators) or Report.",
+    "unauthorizedAdminAction": "Demote",
+    "addMissingAdministrators": true,
+    "createMissingUsers": false,
+    "setPasswords": true,
+    "passwordNeverExpires": false,
+    "requirePassword": true,
+    "requirePasswordChangeAtNextLogon": false,
+    "enableDisabledAuthorizedUsers": false,
+    "disableGuest": true,
+    "disableBuiltinAdministrator": true,
+    "_rename": "Leave empty to keep the default names. Renaming is sometimes scored, but some images check the original names.",
+    "renameAdministratorTo": "",
+    "renameGuestTo": "",
+    "_removeExtraGroupMembers": "For groups listed in competition.json, remove members that are not listed there.",
+    "removeExtraGroupMembers": false,
+    "_reviewGroups": "Members of these groups are written to privileged-group-members.csv for manual review.",
+    "reviewGroups": [
+      "Administrators",
+      "Backup Operators",
+      "Power Users",
+      "Remote Desktop Users",
+      "Remote Management Users",
+      "Hyper-V Administrators",
+      "Network Configuration Operators",
+      "Cryptographic Operators",
+      "Distributed COM Users",
+      "Event Log Readers",
+      "Print Operators",
+      "Server Operators",
+      "Account Operators"
+    ]
+  },
+
+  "firewall": {
+    "_defaultActions": "Block or Allow.",
+    "defaultInboundAction": "Block",
+    "defaultOutboundAction": "Allow",
+    "notifyOnListen": false,
+    "allowUnicastResponseToMulticast": false,
+    "logFileName": "%SystemRoot%\\System32\\LogFiles\\Firewall\\pfirewall.log",
+    "logMaxSizeKilobytes": 16384,
+    "logBlocked": true,
+    "logAllowed": true,
+    "logIgnored": false,
+    "_disableRuleGroups": "Disable the built-in rule groups listed in firewall.json.",
+    "disableRuleGroups": true,
+    "_addBlockRules": "Create the block rules listed in firewall.json.",
+    "addBlockRules": true,
+    "_blockInboundIcmpEcho": "Block inbound ping. Off by default because some images and scoring checks require ping.",
+    "blockInboundIcmpEcho": false
+  },
+
+  "features": {
+    "disableSmb1Server": true,
+    "disable": [
+      { "name": "SMB1Protocol", "description": "SMB version 1" },
+      { "name": "SMB1Protocol-Client", "description": "SMB version 1 client" },
+      { "name": "SMB1Protocol-Server", "description": "SMB version 1 server" },
+      { "name": "TelnetClient", "description": "Telnet client" },
+      { "name": "TFTP", "description": "TFTP client" },
+      { "name": "SimpleTCP", "description": "Simple TCP/IP services" },
+      { "name": "MicrosoftWindowsPowerShellV2", "description": "PowerShell 2.0 engine" },
+      { "name": "MicrosoftWindowsPowerShellV2Root", "description": "PowerShell 2.0" },
+      { "name": "TelnetServer", "description": "Telnet server", "skipIfCritical": ["Telnet"] },
+      { "name": "IIS-FTPServer", "description": "IIS FTP server", "skipIfCritical": ["FTP"] },
+      { "name": "IIS-WebServerRole", "description": "IIS web server", "skipIfCritical": ["HTTP", "FTP"] },
+      { "name": "Printing-Foundation-InternetPrinting-Client", "description": "Internet printing client", "skipIfCritical": ["Printing"] },
+      { "name": "WorkFolders-Client", "description": "Work Folders client" }
+    ]
+  },
+
+  "defender": {
+    "_preferences": "Passed to Set-MpPreference. Any parameter of Set-MpPreference may be added.",
+    "preferences": {
+      "DisableRealtimeMonitoring": false,
+      "DisableBehaviorMonitoring": false,
+      "DisableIOAVProtection": false,
+      "DisableScriptScanning": false,
+      "DisableArchiveScanning": false,
+      "DisableRemovableDriveScanning": false,
+      "DisableBlockAtFirstSeen": false,
+      "MAPSReporting": 2,
+      "SubmitSamplesConsent": 1,
+      "CloudBlockLevel": 2,
+      "PUAProtection": 1,
+      "EnableNetworkProtection": 1
+    },
+    "removeExclusions": true,
+    "updateSignatures": true,
+    "startQuickScan": true
+  },
+
+  "windowsUpdate": {
+    "setWuauservAutomatic": true,
+    "triggerScan": true
+  },
+
+  "shares": {
+    "_keep": "Shares that are never removed. Administrative shares (ADMIN$, C$, IPC$) are always kept.",
+    "keep": ["NETLOGON", "SYSVOL"]
+  },
+
+  "printers": {
+    "_keep": "Printer names that are not removed.",
+    "keep": []
+  },
+
+  "tasks": {
+    "_disableTaskPathPatterns": "Scheduled task folders whose tasks are disabled (not deleted).",
+    "disableTaskPathPatterns": [
+      "\\Microsoft\\Windows\\Maps\\*",
+      "\\Microsoft\\Windows\\Location\\*",
+      "\\Microsoft\\Windows\\Windows Error Reporting\\*",
+      "\\Microsoft\\XblGameSave\\*"
+    ],
+    "_suspiciousPatterns": "Regular expressions. A non-Microsoft task whose command matches one of them is marked suspicious.",
+    "suspiciousPatterns": [
+      "(?i)-enc(odedcommand)?\\s",
+      "(?i)iex|invoke-expression|downloadstring|downloadfile|invoke-webrequest",
+      "(?i)\\b(nc|ncat|netcat)(\\.exe)?\\b",
+      "(?i)mshta|rundll32|regsvr32|certutil|bitsadmin|wscript|cscript",
+      "(?i)\\\\(temp|appdata|public|programdata)\\\\",
+      "(?i)https?://",
+      "(?i)net\\s+user\\s+\\S+\\s+/add",
+      "(?i)net\\s+localgroup\\s+administrators"
+    ],
+    "disableSuspicious": true
+  },
+
+  "ssh": {
+    "_help": "Used only when SSH is a critical service.",
+    "sshdConfigPath": "%ProgramData%\\ssh\\sshd_config",
+    "options": {
+      "PermitRootLogin": "no",
+      "PermitEmptyPasswords": "no",
+      "PasswordAuthentication": "yes",
+      "PubkeyAuthentication": "yes",
+      "MaxAuthTries": "4",
+      "LoginGraceTime": "60",
+      "ClientAliveInterval": "300",
+      "ClientAliveCountMax": "2",
+      "X11Forwarding": "no",
+      "AllowTcpForwarding": "no",
+      "AllowAgentForwarding": "no",
+      "PermitTunnel": "no",
+      "GatewayPorts": "no",
+      "StrictModes": "yes",
+      "LogLevel": "VERBOSE"
+    }
+  },
+
+  "browsers": {
+    "firefox": {
+      "enabled": true,
+      "_policies": "Firefox enterprise policies. See https://mozilla.github.io/policy-templates/ for every option.",
+      "policies": {
+        "DisableTelemetry": true,
+        "DisableFirefoxStudies": true,
+        "AppAutoUpdate": true,
+        "ExtensionUpdate": true,
+        "PopupBlocking": { "Default": true, "Locked": true },
+        "EnableTrackingProtection": { "Value": true, "Locked": true },
+        "SSLVersionMin": "tls1.2",
+        "Preferences": {
+          "browser.safebrowsing.malware.enabled": { "Value": true, "Status": "locked" },
+          "browser.safebrowsing.phishing.enabled": { "Value": true, "Status": "locked" },
+          "browser.safebrowsing.downloads.enabled": { "Value": true, "Status": "locked" },
+          "dom.disable_open_during_load": { "Value": true, "Status": "locked" },
+          "xpinstall.whitelist.required": { "Value": true, "Status": "locked" }
+        }
+      }
+    }
+  },
+
+  "serverRoles": {
+    "dnsDisableZoneTransfers": true,
+    "dnsSecureDynamicUpdates": true,
+    "dnsCachePollutionProtection": true,
+    "iisDisableDirectoryBrowsing": true,
+    "iisRemoveServerHeader": true
+  },
+
+  "hosts": {
+    "_action": "Reset (back up, then replace with an empty hosts file) or Report.",
+    "action": "Reset"
+  },
+
+  "software": {
+    "_attemptUninstall": "When true, each prohibited program is offered for uninstallation, one at a time.",
+    "attemptUninstall": false,
+    "executableSearchRoots": [
+      "%SystemDrive%\\Users",
+      "%ProgramFiles%",
+      "%ProgramFiles(x86)%",
+      "%ProgramData%",
+      "%SystemRoot%\\Temp",
+      "%SystemDrive%\\inetpub"
+    ]
+  },
+
+  "files": {
+    "_action": "Report or Quarantine. Quarantine moves files to quarantinePath. Files are never deleted.",
+    "action": "Report",
+    "quarantinePath": "%SystemDrive%\\CP-Quarantine",
+    "roots": [
+      "%SystemDrive%\\Users",
+      "%SystemDrive%\\inetpub",
+      "%SystemDrive%\\Shares"
+    ],
+    "excludePathPatterns": [
+      "*\\AppData\\Local\\Microsoft\\*",
+      "*\\AppData\\Local\\Packages\\*",
+      "*\\AppData\\Local\\Temp\\*",
+      "*\\AppData\\Roaming\\Microsoft\\*",
+      "*\\Default\\*",
+      "*\\All Users\\*"
+    ]
+  }
+}

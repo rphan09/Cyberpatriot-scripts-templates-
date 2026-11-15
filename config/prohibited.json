@@ -1,0 +1,30 @@
+{
+  "_help": "Lists used by the Software and Files steps. software and storeApps are matched as substrings of the program name. executables are exact file names. Extensions are matched against file names. Programs listed in competition.json under requiredSoftware are never reported.",
+
+  "software": [
+    "Wireshark", "Npcap", "WinPcap", "Nmap", "Zenmap", "Angry IP Scanner", "Advanced IP Scanner", "Cain & Abel", "John the Ripper", "Hashcat", "Ophcrack", "L0phtCrack", "THC Hydra", "Metasploit", "Burp Suite", "Aircrack", "NetStumbler", "Netcat", "Nessus", "Cheat Engine", "Process Hacker", "TeamViewer", "AnyDesk", "TightVNC", "UltraVNC", "RealVNC", "uTorrent", "BitTorrent", "qBittorrent", "Vuze", "FrostWire", "LimeWire", "Kazaa", "Shareaza", "eMule", "Deluge", "Tor Browser", "CCleaner", "Steam", "Epic Games", "Minecraft", "Roblox", "Battle.net", "League of Legends", "itunes"
+  ],
+
+  "storeApps": [
+    "MinecraftUWP", "Solitaire", "CandyCrush", "BubbleWitch", "FarmVille", "Roblox", "Spotify", "XboxApp", "GamingApp"
+  ],
+
+  "executables": [
+    "nc.exe", "nc64.exe", "ncat.exe", "netcat.exe", "nmap.exe", "mimikatz.exe", "psexec.exe", "PsExec64.exe",
+    "wce.exe", "pwdump.exe", "pwdump7.exe", "fgdump.exe", "john.exe", "hashcat.exe", "hydra.exe",
+    "procdump.exe", "lazagne.exe", "rubeus.exe", "sharphound.exe", "plink.exe", "chisel.exe"
+  ],
+
+  "mediaExtensions": [
+    ".mp3", ".mp4", ".m4a", ".m4v", ".wav", ".wma", ".wmv", ".flac", ".aac", ".ogg", ".oga",
+    ".avi", ".mkv", ".mov", ".flv", ".webm", ".mpg", ".mpeg", ".3gp", ".aiff", ".opus"
+  ],
+
+  "otherExtensions": [
+    ".torrent", ".kdbx", ".pcap", ".pcapng"
+  ],
+
+  "namePatterns": [
+    "*password*", "*passwd*", "*credential*", "*creds*", "*secret*", "*hashes*", "*shadow*"
+  ]
+}

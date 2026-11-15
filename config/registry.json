@@ -1,0 +1,826 @@
+{
+  "_help": "Registry values applied by the Registry step. type is DWord, QWord, String, ExpandString, MultiString or Delete. Change any value, set a category's enabled to false to skip it, or add new entries. skipIfCritical skips an entry when one of its tags is critical; onlyIfCritical applies it only when one of its tags is critical.",
+  "categories": {
+    "UAC": {
+      "enabled": true,
+      "entries": [
+        {
+          "path": "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System",
+          "name": "EnableLUA",
+          "type": "DWord",
+          "value": 1,
+          "description": "UAC: run all administrators in Admin Approval Mode"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System",
+          "name": "ConsentPromptBehaviorAdmin",
+          "type": "DWord",
+          "value": 2,
+          "description": "UAC: prompt administrators for consent on the secure desktop (2 = highest)"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System",
+          "name": "ConsentPromptBehaviorUser",
+          "type": "DWord",
+          "value": 0,
+          "description": "UAC: automatically deny elevation requests from standard users"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System",
+          "name": "PromptOnSecureDesktop",
+          "type": "DWord",
+          "value": 1,
+          "description": "UAC: switch to the secure desktop when prompting"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System",
+          "name": "FilterAdministratorToken",
+          "type": "DWord",
+          "value": 1,
+          "description": "UAC: Admin Approval Mode for the built-in Administrator"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System",
+          "name": "EnableInstallerDetection",
+          "type": "DWord",
+          "value": 1,
+          "description": "UAC: detect application installations and prompt"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System",
+          "name": "EnableSecureUIAPaths",
+          "type": "DWord",
+          "value": 1,
+          "description": "UAC: elevate UIAccess applications only from secure locations"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System",
+          "name": "EnableVirtualization",
+          "type": "DWord",
+          "value": 1,
+          "description": "UAC: virtualize file and registry write failures"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System",
+          "name": "LocalAccountTokenFilterPolicy",
+          "type": "DWord",
+          "value": 0,
+          "description": "UAC restrictions on local accounts during network logons"
+        }
+      ]
+    },
+    "Logon": {
+      "enabled": true,
+      "entries": [
+        {
+          "path": "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System",
+          "name": "DontDisplayLastUserName",
+          "type": "DWord",
+          "value": 1,
+          "description": "Interactive logon: do not display last signed-in user"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System",
+          "name": "DisableCAD",
+          "type": "DWord",
+          "value": 0,
+          "description": "Interactive logon: require Ctrl+Alt+Del"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System",
+          "name": "InactivityTimeoutSecs",
+          "type": "DWord",
+          "value": 900,
+          "description": "Interactive logon: machine inactivity limit (seconds)"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System",
+          "name": "ShutdownWithoutLogon",
+          "type": "DWord",
+          "value": 0,
+          "description": "Shutdown: do not allow shutdown without logging on"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon",
+          "name": "CachedLogonsCount",
+          "type": "String",
+          "value": "4",
+          "description": "Interactive logon: number of previous logons to cache"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon",
+          "name": "PasswordExpiryWarning",
+          "type": "DWord",
+          "value": 14,
+          "description": "Interactive logon: prompt user to change password before expiration (days)"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon",
+          "name": "AutoAdminLogon",
+          "type": "String",
+          "value": "0",
+          "description": "Disable automatic logon"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon",
+          "name": "DefaultPassword",
+          "type": "Delete",
+          "value": null,
+          "description": "Remove plain-text automatic logon password"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon",
+          "name": "ScRemoveOption",
+          "type": "String",
+          "value": "1",
+          "description": "Interactive logon: smart card removal behavior (lock workstation)"
+        }
+      ]
+    },
+    "Authentication": {
+      "enabled": true,
+      "requiresRestart": true,
+      "entries": [
+        {
+          "path": "HKLM:\\SYSTEM\\CurrentControlSet\\Control\\Lsa",
+          "name": "NoLMHash",
+          "type": "DWord",
+          "value": 1,
+          "description": "Network security: do not store LAN Manager hash"
+        },
+        {
+          "path": "HKLM:\\SYSTEM\\CurrentControlSet\\Control\\Lsa",
+          "name": "LmCompatibilityLevel",
+          "type": "DWord",
+          "value": 5,
+          "description": "Network security: send NTLMv2 only, refuse LM and NTLM"
+        },
+        {
+          "path": "HKLM:\\SYSTEM\\CurrentControlSet\\Control\\Lsa",
+          "name": "RestrictAnonymous",
+          "type": "DWord",
+          "value": 1,
+          "description": "Network access: do not allow anonymous enumeration of SAM accounts and shares"
+        },
+        {
+          "path": "HKLM:\\SYSTEM\\CurrentControlSet\\Control\\Lsa",
+          "name": "RestrictAnonymousSAM",
+          "type": "DWord",
+          "value": 1,
+          "description": "Network access: do not allow anonymous enumeration of SAM accounts"
+        },
+        {
+          "path": "HKLM:\\SYSTEM\\CurrentControlSet\\Control\\Lsa",
+          "name": "EveryoneIncludesAnonymous",
+          "type": "DWord",
+          "value": 0,
+          "description": "Network access: Everyone permissions do not apply to anonymous users"
+        },
+        {
+          "path": "HKLM:\\SYSTEM\\CurrentControlSet\\Control\\Lsa",
+          "name": "DisableDomainCreds",
+          "type": "DWord",
+          "value": 1,
+          "description": "Network access: do not allow storage of passwords and credentials"
+        },
+        {
+          "path": "HKLM:\\SYSTEM\\CurrentControlSet\\Control\\Lsa",
+          "name": "LimitBlankPasswordUse",
+          "type": "DWord",
+          "value": 1,
+          "description": "Accounts: limit local use of blank passwords to console logon only"
+        },
+        {
+          "path": "HKLM:\\SYSTEM\\CurrentControlSet\\Control\\Lsa",
+          "name": "SCENoApplyLegacyAuditPolicy",
+          "type": "DWord",
+          "value": 1,
+          "description": "Audit: force audit policy subcategory settings to override category settings"
+        },
+        {
+          "path": "HKLM:\\SYSTEM\\CurrentControlSet\\Control\\Lsa",
+          "name": "CrashOnAuditFail",
+          "type": "DWord",
+          "value": 0,
+          "description": "Audit: do not shut down if unable to log security audits"
+        },
+        {
+          "path": "HKLM:\\SYSTEM\\CurrentControlSet\\Control\\Lsa",
+          "name": "RestrictRemoteSAM",
+          "type": "String",
+          "value": "O:BAG:BAD:(A;;RC;;;BA)",
+          "description": "Network access: restrict clients allowed to make remote calls to SAM"
+        },
+        {
+          "path": "HKLM:\\SYSTEM\\CurrentControlSet\\Control\\Lsa",
+          "name": "RunAsPPL",
+          "type": "DWord",
+          "value": 1,
+          "description": "Run LSA as a protected process"
+        },
+        {
+          "path": "HKLM:\\SYSTEM\\CurrentControlSet\\Control\\Lsa\\MSV1_0",
+          "name": "NTLMMinClientSec",
+          "type": "DWord",
+          "value": 537395200,
+          "description": "Network security: minimum session security for NTLM clients (NTLMv2 and 128-bit)"
+        },
+        {
+          "path": "HKLM:\\SYSTEM\\CurrentControlSet\\Control\\Lsa\\MSV1_0",
+          "name": "NTLMMinServerSec",
+          "type": "DWord",
+          "value": 537395200,
+          "description": "Network security: minimum session security for NTLM servers (NTLMv2 and 128-bit)"
+        },
+        {
+          "path": "HKLM:\\SYSTEM\\CurrentControlSet\\Control\\Lsa\\MSV1_0",
+          "name": "allownullsessionfallback",
+          "type": "DWord",
+          "value": 0,
+          "description": "Network security: do not allow LocalSystem NULL session fallback"
+        },
+        {
+          "path": "HKLM:\\SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\WDigest",
+          "name": "UseLogonCredential",
+          "type": "DWord",
+          "value": 0,
+          "description": "Do not store WDigest credentials in memory"
+        },
+        {
+          "path": "HKLM:\\SYSTEM\\CurrentControlSet\\Services\\Netlogon\\Parameters",
+          "name": "RequireSignOrSeal",
+          "type": "DWord",
+          "value": 1,
+          "description": "Domain member: digitally encrypt or sign secure channel data (always)"
+        },
+        {
+          "path": "HKLM:\\SYSTEM\\CurrentControlSet\\Services\\Netlogon\\Parameters",
+          "name": "RequireStrongKey",
+          "type": "DWord",
+          "value": 1,
+          "description": "Domain member: require strong session key"
+        }
+      ]
+    },
+    "SMB": {
+      "enabled": true,
+      "requiresRestart": true,
+      "entries": [
+        {
+          "path": "HKLM:\\SYSTEM\\CurrentControlSet\\Services\\LanmanServer\\Parameters",
+          "name": "RequireSecuritySignature",
+          "type": "DWord",
+          "value": 1,
+          "description": "Microsoft network server: digitally sign communications (always)"
+        },
+        {
+          "path": "HKLM:\\SYSTEM\\CurrentControlSet\\Services\\LanmanServer\\Parameters",
+          "name": "EnableSecuritySignature",
+          "type": "DWord",
+          "value": 1,
+          "description": "Microsoft network server: digitally sign communications (if client agrees)"
+        },
+        {
+          "path": "HKLM:\\SYSTEM\\CurrentControlSet\\Services\\LanmanServer\\Parameters",
+          "name": "RestrictNullSessAccess",
+          "type": "DWord",
+          "value": 1,
+          "description": "Network access: restrict anonymous access to named pipes and shares"
+        },
+        {
+          "path": "HKLM:\\SYSTEM\\CurrentControlSet\\Services\\LanmanServer\\Parameters",
+          "name": "NullSessionShares",
+          "type": "MultiString",
+          "value": [],
+          "description": "Network access: shares that can be accessed anonymously (none)"
+        },
+        {
+          "path": "HKLM:\\SYSTEM\\CurrentControlSet\\Services\\LanmanServer\\Parameters",
+          "name": "EnableForcedLogOff",
+          "type": "DWord",
+          "value": 1,
+          "description": "Microsoft network server: disconnect clients when logon hours expire"
+        },
+        {
+          "path": "HKLM:\\SYSTEM\\CurrentControlSet\\Services\\LanmanServer\\Parameters",
+          "name": "SMB1",
+          "type": "DWord",
+          "value": 0,
+          "description": "Disable SMBv1 on the server"
+        },
+        {
+          "path": "HKLM:\\SYSTEM\\CurrentControlSet\\Services\\LanmanWorkstation\\Parameters",
+          "name": "RequireSecuritySignature",
+          "type": "DWord",
+          "value": 1,
+          "description": "Microsoft network client: digitally sign communications (always)"
+        },
+        {
+          "path": "HKLM:\\SYSTEM\\CurrentControlSet\\Services\\LanmanWorkstation\\Parameters",
+          "name": "EnableSecuritySignature",
+          "type": "DWord",
+          "value": 1,
+          "description": "Microsoft network client: digitally sign communications (if server agrees)"
+        },
+        {
+          "path": "HKLM:\\SYSTEM\\CurrentControlSet\\Services\\LanmanWorkstation\\Parameters",
+          "name": "EnablePlainTextPassword",
+          "type": "DWord",
+          "value": 0,
+          "description": "Microsoft network client: do not send unencrypted passwords to SMB servers"
+        },
+        {
+          "path": "HKLM:\\SYSTEM\\CurrentControlSet\\Services\\mrxsmb10",
+          "name": "Start",
+          "type": "DWord",
+          "value": 4,
+          "description": "Disable the SMBv1 client driver"
+        }
+      ]
+    },
+    "AutoPlay": {
+      "enabled": true,
+      "entries": [
+        {
+          "path": "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer",
+          "name": "NoDriveTypeAutoRun",
+          "type": "DWord",
+          "value": 255,
+          "description": "Turn off AutoPlay on all drives"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer",
+          "name": "NoAutorun",
+          "type": "DWord",
+          "value": 1,
+          "description": "Do not execute AutoRun commands"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\Explorer",
+          "name": "NoAutoplayfornonVolume",
+          "type": "DWord",
+          "value": 1,
+          "description": "Disallow AutoPlay for non-volume devices"
+        }
+      ]
+    },
+    "RemoteDesktop": {
+      "enabled": true,
+      "entries": [
+        {
+          "path": "HKLM:\\SYSTEM\\CurrentControlSet\\Control\\Terminal Server",
+          "name": "fDenyTSConnections",
+          "type": "DWord",
+          "value": 1,
+          "description": "Remote Desktop: deny connections",
+          "skipIfCritical": [
+            "RDP"
+          ]
+        },
+        {
+          "path": "HKLM:\\SYSTEM\\CurrentControlSet\\Control\\Terminal Server",
+          "name": "fDenyTSConnections",
+          "type": "DWord",
+          "value": 0,
+          "description": "Remote Desktop: allow connections (RDP is critical)",
+          "onlyIfCritical": [
+            "RDP"
+          ]
+        },
+        {
+          "path": "HKLM:\\SYSTEM\\CurrentControlSet\\Control\\Terminal Server\\WinStations\\RDP-Tcp",
+          "name": "UserAuthentication",
+          "type": "DWord",
+          "value": 1,
+          "description": "Remote Desktop: require Network Level Authentication",
+          "onlyIfCritical": [
+            "RDP"
+          ]
+        },
+        {
+          "path": "HKLM:\\SYSTEM\\CurrentControlSet\\Control\\Terminal Server\\WinStations\\RDP-Tcp",
+          "name": "SecurityLayer",
+          "type": "DWord",
+          "value": 2,
+          "description": "Remote Desktop: require TLS security layer",
+          "onlyIfCritical": [
+            "RDP"
+          ]
+        },
+        {
+          "path": "HKLM:\\SYSTEM\\CurrentControlSet\\Control\\Terminal Server\\WinStations\\RDP-Tcp",
+          "name": "MinEncryptionLevel",
+          "type": "DWord",
+          "value": 3,
+          "description": "Remote Desktop: high encryption level",
+          "onlyIfCritical": [
+            "RDP"
+          ]
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Terminal Services",
+          "name": "fPromptForPassword",
+          "type": "DWord",
+          "value": 1,
+          "description": "Remote Desktop: always prompt for password upon connection",
+          "onlyIfCritical": [
+            "RDP"
+          ]
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Terminal Services",
+          "name": "fDisableCdm",
+          "type": "DWord",
+          "value": 1,
+          "description": "Remote Desktop: do not allow drive redirection",
+          "onlyIfCritical": [
+            "RDP"
+          ]
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Terminal Services",
+          "name": "DisablePasswordSaving",
+          "type": "DWord",
+          "value": 1,
+          "description": "Remote Desktop: do not allow passwords to be saved"
+        }
+      ]
+    },
+    "RemoteAssistance": {
+      "enabled": true,
+      "entries": [
+        {
+          "path": "HKLM:\\SYSTEM\\CurrentControlSet\\Control\\Remote Assistance",
+          "name": "fAllowToGetHelp",
+          "type": "DWord",
+          "value": 0,
+          "description": "Turn off Remote Assistance"
+        },
+        {
+          "path": "HKLM:\\SYSTEM\\CurrentControlSet\\Control\\Remote Assistance",
+          "name": "fAllowFullControl",
+          "type": "DWord",
+          "value": 0,
+          "description": "Remote Assistance: do not allow remote control"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Terminal Services",
+          "name": "fAllowUnsolicited",
+          "type": "DWord",
+          "value": 0,
+          "description": "Turn off offer (unsolicited) Remote Assistance"
+        }
+      ]
+    },
+    "SmartScreen": {
+      "enabled": true,
+      "entries": [
+        {
+          "path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\System",
+          "name": "EnableSmartScreen",
+          "type": "DWord",
+          "value": 1,
+          "description": "Windows Defender SmartScreen for Explorer: on"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\System",
+          "name": "ShellSmartScreenLevel",
+          "type": "String",
+          "value": "Block",
+          "description": "Windows Defender SmartScreen: warn and prevent bypass"
+        }
+      ]
+    },
+    "Network": {
+      "enabled": true,
+      "requiresRestart": true,
+      "entries": [
+        {
+          "path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\DNSClient",
+          "name": "EnableMulticast",
+          "type": "DWord",
+          "value": 0,
+          "description": "Turn off multicast name resolution (LLMNR)"
+        },
+        {
+          "path": "HKLM:\\SYSTEM\\CurrentControlSet\\Services\\Tcpip\\Parameters",
+          "name": "DisableIPSourceRouting",
+          "type": "DWord",
+          "value": 2,
+          "description": "IPv4 source routing: highest protection"
+        },
+        {
+          "path": "HKLM:\\SYSTEM\\CurrentControlSet\\Services\\Tcpip6\\Parameters",
+          "name": "DisableIPSourceRouting",
+          "type": "DWord",
+          "value": 2,
+          "description": "IPv6 source routing: highest protection"
+        },
+        {
+          "path": "HKLM:\\SYSTEM\\CurrentControlSet\\Services\\Tcpip\\Parameters",
+          "name": "EnableICMPRedirect",
+          "type": "DWord",
+          "value": 0,
+          "description": "Do not allow ICMP redirects to override OSPF routes"
+        },
+        {
+          "path": "HKLM:\\SYSTEM\\CurrentControlSet\\Services\\NetBT\\Parameters",
+          "name": "NoNameReleaseOnDemand",
+          "type": "DWord",
+          "value": 1,
+          "description": "Ignore NetBIOS name release requests except from WINS servers"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\LanmanWorkstation",
+          "name": "AllowInsecureGuestAuth",
+          "type": "DWord",
+          "value": 0,
+          "description": "Do not allow insecure guest logons to SMB servers"
+        }
+      ]
+    },
+    "Installer": {
+      "enabled": true,
+      "entries": [
+        {
+          "path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\Installer",
+          "name": "AlwaysInstallElevated",
+          "type": "DWord",
+          "value": 0,
+          "description": "Windows Installer: do not always install with elevated privileges (machine)"
+        },
+        {
+          "path": "HKCU:\\SOFTWARE\\Policies\\Microsoft\\Windows\\Installer",
+          "name": "AlwaysInstallElevated",
+          "type": "DWord",
+          "value": 0,
+          "description": "Windows Installer: do not always install with elevated privileges (current user)"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\Installer",
+          "name": "EnableUserControl",
+          "type": "DWord",
+          "value": 0,
+          "description": "Windows Installer: do not allow user control over installs"
+        }
+      ]
+    },
+    "PowerShellLogging": {
+      "enabled": true,
+      "entries": [
+        {
+          "path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\PowerShell\\ScriptBlockLogging",
+          "name": "EnableScriptBlockLogging",
+          "type": "DWord",
+          "value": 1,
+          "description": "Turn on PowerShell script block logging"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\PowerShell\\ModuleLogging",
+          "name": "EnableModuleLogging",
+          "type": "DWord",
+          "value": 1,
+          "description": "Turn on PowerShell module logging"
+        }
+      ]
+    },
+    "ScreenSaver": {
+      "enabled": true,
+      "_note": "Applies to the account that runs the script. Other users must be configured after they log on, or through Group Policy.",
+      "entries": [
+        {
+          "path": "HKCU:\\Software\\Policies\\Microsoft\\Windows\\Control Panel\\Desktop",
+          "name": "ScreenSaveActive",
+          "type": "String",
+          "value": "1",
+          "description": "Enable screen saver"
+        },
+        {
+          "path": "HKCU:\\Software\\Policies\\Microsoft\\Windows\\Control Panel\\Desktop",
+          "name": "ScreenSaverIsSecure",
+          "type": "String",
+          "value": "1",
+          "description": "Password protect the screen saver"
+        },
+        {
+          "path": "HKCU:\\Software\\Policies\\Microsoft\\Windows\\Control Panel\\Desktop",
+          "name": "ScreenSaveTimeOut",
+          "type": "String",
+          "value": "600",
+          "description": "Screen saver timeout (seconds)"
+        }
+      ]
+    },
+    "DefenderPolicy": {
+      "enabled": true,
+      "_note": "Removes policy values that turn Defender off.",
+      "entries": [
+        {
+          "path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows Defender",
+          "name": "DisableAntiSpyware",
+          "type": "Delete",
+          "value": null,
+          "description": "Remove policy that turns off Microsoft Defender"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows Defender",
+          "name": "DisableAntiVirus",
+          "type": "Delete",
+          "value": null,
+          "description": "Remove policy that turns off Defender Antivirus"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows Defender\\Real-Time Protection",
+          "name": "DisableRealtimeMonitoring",
+          "type": "Delete",
+          "value": null,
+          "description": "Remove policy that turns off real-time protection"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows Defender\\Real-Time Protection",
+          "name": "DisableBehaviorMonitoring",
+          "type": "Delete",
+          "value": null,
+          "description": "Remove policy that turns off behavior monitoring"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows Defender\\Real-Time Protection",
+          "name": "DisableOnAccessProtection",
+          "type": "Delete",
+          "value": null,
+          "description": "Remove policy that turns off on-access protection"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows Defender\\Real-Time Protection",
+          "name": "DisableIOAVProtection",
+          "type": "Delete",
+          "value": null,
+          "description": "Remove policy that turns off download scanning"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows Defender\\Real-Time Protection",
+          "name": "DisableScanOnRealtimeEnable",
+          "type": "Delete",
+          "value": null,
+          "description": "Remove policy that turns off process scanning"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows Defender",
+          "name": "PUAProtection",
+          "type": "DWord",
+          "value": 1,
+          "description": "Block potentially unwanted applications"
+        }
+      ]
+    },
+    "WindowsUpdatePolicy": {
+      "enabled": true,
+      "entries": [
+        {
+          "path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\WindowsUpdate\\AU",
+          "name": "NoAutoUpdate",
+          "type": "DWord",
+          "value": 0,
+          "description": "Windows Update: automatic updates on"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\WindowsUpdate\\AU",
+          "name": "AUOptions",
+          "type": "DWord",
+          "value": 4,
+          "description": "Windows Update: auto download and schedule the install"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\WindowsUpdate\\AU",
+          "name": "ScheduledInstallDay",
+          "type": "DWord",
+          "value": 0,
+          "description": "Windows Update: install every day"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\WindowsUpdate\\AU",
+          "name": "ScheduledInstallTime",
+          "type": "DWord",
+          "value": 3,
+          "description": "Windows Update: install at 03:00"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\WindowsUpdate",
+          "name": "DisableWindowsUpdateAccess",
+          "type": "Delete",
+          "value": null,
+          "description": "Remove policy that blocks access to Windows Update"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\WindowsUpdate",
+          "name": "DoNotConnectToWindowsUpdateInternetLocations",
+          "type": "Delete",
+          "value": null,
+          "description": "Remove policy that blocks Windows Update servers"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer",
+          "name": "NoWindowsUpdate",
+          "type": "Delete",
+          "value": null,
+          "description": "Remove policy that hides Windows Update"
+        }
+      ]
+    },
+    "ChromePolicy": {
+      "enabled": true,
+      "_note": "Applied even when Chrome is not installed; the values have no effect until it is.",
+      "entries": [
+        {
+          "path": "HKLM:\\SOFTWARE\\Policies\\Google\\Chrome",
+          "name": "SafeBrowsingProtectionLevel",
+          "type": "DWord",
+          "value": 1,
+          "description": "Chrome: standard Safe Browsing protection"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Policies\\Google\\Chrome",
+          "name": "DefaultPopupsSetting",
+          "type": "DWord",
+          "value": 2,
+          "description": "Chrome: block pop-ups"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Policies\\Google\\Chrome",
+          "name": "BlockThirdPartyCookies",
+          "type": "DWord",
+          "value": 1,
+          "description": "Chrome: block third-party cookies"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Policies\\Google\\Chrome",
+          "name": "PasswordManagerEnabled",
+          "type": "DWord",
+          "value": 0,
+          "description": "Chrome: do not save passwords"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Policies\\Google\\Chrome",
+          "name": "DownloadRestrictions",
+          "type": "DWord",
+          "value": 1,
+          "description": "Chrome: block dangerous downloads"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Policies\\Google\\Chrome",
+          "name": "SSLVersionMin",
+          "type": "String",
+          "value": "tls1.2",
+          "description": "Chrome: minimum TLS 1.2"
+        }
+      ]
+    },
+    "EdgePolicy": {
+      "enabled": true,
+      "entries": [
+        {
+          "path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Edge",
+          "name": "SmartScreenEnabled",
+          "type": "DWord",
+          "value": 1,
+          "description": "Edge: SmartScreen on"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Edge",
+          "name": "PreventSmartScreenPromptOverride",
+          "type": "DWord",
+          "value": 1,
+          "description": "Edge: prevent bypassing SmartScreen warnings"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Edge",
+          "name": "DefaultPopupsSetting",
+          "type": "DWord",
+          "value": 2,
+          "description": "Edge: block pop-ups"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Edge",
+          "name": "PasswordManagerEnabled",
+          "type": "DWord",
+          "value": 0,
+          "description": "Edge: do not save passwords"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Edge",
+          "name": "BlockThirdPartyCookies",
+          "type": "DWord",
+          "value": 1,
+          "description": "Edge: block third-party cookies"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Edge",
+          "name": "SSLVersionMin",
+          "type": "String",
+          "value": "tls1.2",
+          "description": "Edge: minimum TLS 1.2"
+        }
+      ]
+    }
+  }
+}

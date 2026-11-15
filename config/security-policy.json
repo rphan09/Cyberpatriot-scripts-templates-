@@ -1,0 +1,139 @@
+{
+  "_help": "Values written to the local security policy with secedit. Every number may be changed. Values in this file overwrite the image's current settings.",
+
+  "SystemAccess": {
+    "_MinimumPasswordAge": "Days before a password can be changed again. Must be lower than MaximumPasswordAge.",
+    "MinimumPasswordAge": 1,
+
+    "_MaximumPasswordAge": "Days before a password expires. 0 means passwords never expire, which CyberPatriot usually penalizes.",
+    "MaximumPasswordAge": 60,
+
+    "_MinimumPasswordLength": "Characters. Values above 14 enable 'Relax minimum password length limits' automatically (Windows 10 2004 or later).",
+    "MinimumPasswordLength": 14,
+
+    "_PasswordComplexity": "1 = enabled, 0 = disabled.",
+    "PasswordComplexity": 1,
+
+    "_PasswordHistorySize": "Number of previous passwords remembered. Maximum 24.",
+    "PasswordHistorySize": 24,
+
+    "_ClearTextPassword": "Store passwords using reversible encryption. 0 = disabled.",
+    "ClearTextPassword": 0,
+
+    "_LockoutBadCount": "Failed logon attempts before lockout. 0 disables lockout.",
+    "LockoutBadCount": 5,
+
+    "_LockoutDuration": "Minutes an account stays locked. -1 means until an administrator unlocks it.",
+    "LockoutDuration": 30,
+
+    "_ResetLockoutCount": "Minutes before the failed-attempt counter resets. Cannot exceed LockoutDuration.",
+    "ResetLockoutCount": 30,
+
+    "_ForceLogoffWhenHourExpire": "Network security: force logoff when logon hours expire. 1 = enabled.",
+    "ForceLogoffWhenHourExpire": 1,
+
+    "_LSAAnonymousNameLookup": "Network access: allow anonymous SID/name translation. 0 = disabled.",
+    "LSAAnonymousNameLookup": 0,
+
+    "_EnableAdminAccount": "Built-in Administrator account. 0 = disabled. Skipped automatically when the script runs as that account.",
+    "EnableAdminAccount": 0,
+
+    "_EnableGuestAccount": "Built-in Guest account. 0 = disabled.",
+    "EnableGuestAccount": 0
+  },
+
+  "EventAudit": {
+    "_help": "Legacy audit categories. 0 = no auditing, 1 = success, 2 = failure, 3 = success and failure. The advanced subcategories in audit-policy.json are applied afterwards and take precedence.",
+    "AuditSystemEvents": 3,
+    "AuditLogonEvents": 3,
+    "AuditObjectAccess": 3,
+    "AuditPrivilegeUse": 3,
+    "AuditPolicyChange": 3,
+    "AuditAccountManage": 3,
+    "AuditProcessTracking": 3,
+    "AuditDSAccess": 3,
+    "AuditAccountLogon": 3
+  },
+
+  "PrivilegeRights": {
+    "_help": "User rights assignment. Each value is a list of SIDs prefixed with *. An empty list means no one. Common SIDs: *S-1-5-32-544 Administrators, *S-1-5-32-545 Users, *S-1-5-32-546 Guests, *S-1-5-32-551 Backup Operators, *S-1-5-32-555 Remote Desktop Users, *S-1-5-19 Local Service, *S-1-5-20 Network Service, *S-1-5-6 Service, *S-1-5-113 Local account, *S-1-5-11 Authenticated Users, *S-1-5-32-568 IIS_IUSRS. Skipped on domain controllers.",
+
+    "_SeTrustedCredManAccessPrivilege": "Access Credential Manager as a trusted caller",
+    "SeTrustedCredManAccessPrivilege": [],
+
+    "_SeNetworkLogonRight": "Access this computer from the network",
+    "SeNetworkLogonRight": ["*S-1-5-32-544", "*S-1-5-11"],
+
+    "_SeTcbPrivilege": "Act as part of the operating system",
+    "SeTcbPrivilege": [],
+
+    "_SeInteractiveLogonRight": "Allow log on locally",
+    "SeInteractiveLogonRight": ["*S-1-5-32-544", "*S-1-5-32-545"],
+
+    "_SeRemoteInteractiveLogonRight": "Allow log on through Remote Desktop Services",
+    "SeRemoteInteractiveLogonRight": ["*S-1-5-32-544", "*S-1-5-32-555"],
+
+    "_SeBackupPrivilege": "Back up files and directories",
+    "SeBackupPrivilege": ["*S-1-5-32-544"],
+
+    "_SeRestorePrivilege": "Restore files and directories",
+    "SeRestorePrivilege": ["*S-1-5-32-544"],
+
+    "_SeCreateTokenPrivilege": "Create a token object",
+    "SeCreateTokenPrivilege": [],
+
+    "_SeCreatePermanentPrivilege": "Create permanent shared objects",
+    "SeCreatePermanentPrivilege": [],
+
+    "_SeDebugPrivilege": "Debug programs",
+    "SeDebugPrivilege": ["*S-1-5-32-544"],
+
+    "_SeDenyNetworkLogonRight": "Deny access to this computer from the network",
+    "SeDenyNetworkLogonRight": ["*S-1-5-32-546"],
+
+    "_SeDenyBatchLogonRight": "Deny log on as a batch job",
+    "SeDenyBatchLogonRight": ["*S-1-5-32-546"],
+
+    "_SeDenyServiceLogonRight": "Deny log on as a service",
+    "SeDenyServiceLogonRight": ["*S-1-5-32-546"],
+
+    "_SeDenyInteractiveLogonRight": "Deny log on locally",
+    "SeDenyInteractiveLogonRight": ["*S-1-5-32-546"],
+
+    "_SeDenyRemoteInteractiveLogonRight": "Deny log on through Remote Desktop Services",
+    "SeDenyRemoteInteractiveLogonRight": ["*S-1-5-32-546"],
+
+    "_SeRemoteShutdownPrivilege": "Force shutdown from a remote system",
+    "SeRemoteShutdownPrivilege": ["*S-1-5-32-544"],
+
+    "_SeLoadDriverPrivilege": "Load and unload device drivers",
+    "SeLoadDriverPrivilege": ["*S-1-5-32-544"],
+
+    "_SeLockMemoryPrivilege": "Lock pages in memory",
+    "SeLockMemoryPrivilege": [],
+
+    "_SeSecurityPrivilege": "Manage auditing and security log",
+    "SeSecurityPrivilege": ["*S-1-5-32-544"],
+
+    "_SeSystemEnvironmentPrivilege": "Modify firmware environment values",
+    "SeSystemEnvironmentPrivilege": ["*S-1-5-32-544"],
+
+    "_SeManageVolumePrivilege": "Perform volume maintenance tasks",
+    "SeManageVolumePrivilege": ["*S-1-5-32-544"],
+
+    "_SeProfileSingleProcessPrivilege": "Profile single process",
+    "SeProfileSingleProcessPrivilege": ["*S-1-5-32-544"],
+
+    "_SeTakeOwnershipPrivilege": "Take ownership of files or other objects",
+    "SeTakeOwnershipPrivilege": ["*S-1-5-32-544"],
+
+    "_SeCreatePagefilePrivilege": "Create a pagefile",
+    "SeCreatePagefilePrivilege": ["*S-1-5-32-544"],
+
+    "_SeCreateGlobalPrivilege": "Create global objects",
+    "SeCreateGlobalPrivilege": ["*S-1-5-32-544", "*S-1-5-19", "*S-1-5-20", "*S-1-5-6"],
+
+    "_SeImpersonatePrivilege": "Impersonate a client after authentication",
+    "SeImpersonatePrivilege": ["*S-1-5-32-544", "*S-1-5-19", "*S-1-5-20", "*S-1-5-6", "*S-1-5-32-568"]
+  }
+}

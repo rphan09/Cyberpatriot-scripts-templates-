@@ -1,0 +1,59 @@
+{
+  "_help": "Tags that may be listed in competition.json under criticalServices. For a critical tag, the listed Windows services are kept running and set to Automatic, the listed ports are allowed inbound, and the listed firewall groups are enabled. Items in other files that carry the tag in skipIfCritical are skipped. New tags may be added.",
+
+  "RDP": {
+    "services": ["TermService", "SessionEnv", "UmRdpService"],
+    "ports": [ { "protocol": "TCP", "port": "3389" } ],
+    "firewallGroups": ["Remote Desktop"]
+  },
+  "SSH": {
+    "services": ["sshd"],
+    "ports": [ { "protocol": "TCP", "port": "22" } ],
+    "firewallGroups": []
+  },
+  "FTP": {
+    "services": ["ftpsvc", "FileZilla Server"],
+    "ports": [ { "protocol": "TCP", "port": "20,21" } ],
+    "firewallGroups": ["FTP Server"]
+  },
+  "HTTP": {
+    "services": ["W3SVC", "WAS", "IISADMIN"],
+    "ports": [ { "protocol": "TCP", "port": "80,443" } ],
+    "firewallGroups": ["World Wide Web Services (HTTP)", "Secure World Wide Web Services (HTTPS)"]
+  },
+  "SMB": {
+    "services": ["LanmanServer"],
+    "ports": [ { "protocol": "TCP", "port": "445" } ],
+    "firewallGroups": ["File and Printer Sharing"]
+  },
+  "DNS": {
+    "services": ["DNS"],
+    "ports": [ { "protocol": "TCP", "port": "53" }, { "protocol": "UDP", "port": "53" } ],
+    "firewallGroups": ["DNS Service"]
+  },
+  "Printing": {
+    "services": ["Spooler"],
+    "ports": [],
+    "firewallGroups": ["File and Printer Sharing"]
+  },
+  "WinRM": {
+    "services": ["WinRM"],
+    "ports": [ { "protocol": "TCP", "port": "5985,5986" } ],
+    "firewallGroups": ["Windows Remote Management"]
+  },
+  "Telnet": {
+    "services": ["TlntSvr"],
+    "ports": [ { "protocol": "TCP", "port": "23" } ],
+    "firewallGroups": []
+  },
+  "SNMP": {
+    "services": ["SNMP"],
+    "ports": [ { "protocol": "UDP", "port": "161" } ],
+    "firewallGroups": ["SNMP Service"]
+  },
+  "VNC": {
+    "services": ["tvnserver", "uvnc_service", "vncserver"],
+    "ports": [ { "protocol": "TCP", "port": "5900" } ],
+    "firewallGroups": []
+  }
+}

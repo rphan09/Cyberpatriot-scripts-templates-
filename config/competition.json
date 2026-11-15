@@ -1,0 +1,21 @@
+{
+  "_instructions": "Fill this file in from the competition README before every run. Names are not case-sensitive. Leave a list empty when the README does not mention it.",
+
+  "authorizedAdministrators": [],
+  "authorizedUsers": [],
+
+  "_criticalServicesHelp": "Tags defined in critical-services.json: RDP, SSH, FTP, HTTP, SMB, DNS, Printing, WinRM, Telnet, SNMP, VNC. A critical service is kept running, its firewall ports are opened, and it is never disabled.",
+  "criticalServices": [],
+
+  "_groupsHelp": "Groups the README asks for, with their members. Example: { \"Developers\": [\"alice\", \"bob\"] }",
+  "groups": {},
+
+  "_requiredSharesHelp": "SMB shares the README says must remain. All other non-default shares are removed.",
+  "requiredShares": [],
+
+  "_requiredSoftwareHelp": "Programs the README says must remain installed. They are never reported as prohibited.",
+  "requiredSoftware": [],
+
+  "_defaultPasswordHelp": "Password assigned to every authorized user except the account running the script. Leave empty to be prompted. A password stored here is in plain text.",
+  "defaultPassword": ""
+}
